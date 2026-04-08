@@ -11,8 +11,8 @@
 :root{--mint:#00B894;--mint-l:#00D4AA;--mint-d:#007A65;--nurse:#3B5BDB;--nurse-d:#2C46B8;--nurse-l:#EEF2FF;--bg:#F0F4F8;--white:#fff;--gray:#6B7280;--text:#1A2B26;--red:#E53E3E;--orange:#DD6B20;--yellow:#D69E2E;}
 html,body{height:100%;overflow:hidden}
 body{font-family:'Noto Sans KR',sans-serif;background:#1A2B26;display:flex;justify-content:center;align-items:center}
-#app{width:100%;max-width:390px;height:100%;max-height:844px;background:var(--bg);display:flex;flex-direction:column;overflow:hidden;position:relative;box-shadow:0 0 80px rgba(0,0,0,.5)}
-@media(min-width:500px){#app{border-radius:48px;border:10px solid #111}}
+#app{width:100%;max-width:390px;height:100%;height:100svh;background:var(--bg);display:flex;flex-direction:column;overflow:hidden;position:relative;box-shadow:0 0 80px rgba(0,0,0,.5)}
+@media(min-width:500px){#app{border-radius:48px;border:10px solid #111;max-height:844px}}
 .status-bar{padding:12px 24px 8px;display:flex;justify-content:space-between;align-items:center;font-size:13px;font-weight:700;color:white;flex-shrink:0;transition:background .4s}
 .screen{display:none;flex:1;flex-direction:column;overflow:hidden;animation:fu .25s ease}
 .screen.active{display:flex}
@@ -36,7 +36,7 @@ body{font-family:'Noto Sans KR',sans-serif;background:#1A2B26;display:flex;justi
 .tab.at.active{color:var(--mint-d)}.tab.at.active::after{background:var(--mint-d)}
 .back-btn{width:36px;height:36px;background:rgba(255,255,255,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:17px;border:none;color:white;cursor:pointer;flex-shrink:0}
 .bottom-bar{padding:12px 16px;border-top:1px solid #E5E7EB;background:white;flex-shrink:0}
-.fab{width:100%;padding:17px;border:none;border-radius:18px;font-size:16px;font-weight:900;font-family:'Noto Sans KR',sans-serif;color:white;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:9px;transition:transform .12s,box-shadow .12s}
+.fab{width:100%;padding:17px;border:none;border-radius:18px;font-size:16px;font-weight:900;font-family:'Noto Sans KR',sans-serif;color:white;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:9px;transition:transform .12s}
 .fab:active{transform:scale(.97)}
 .nfab{background:linear-gradient(135deg,var(--nurse-d),var(--nurse));box-shadow:0 6px 20px rgba(59,91,219,.35)}
 .afab{background:linear-gradient(135deg,var(--mint-d),var(--mint));box-shadow:0 6px 20px rgba(0,184,148,.35)}
@@ -118,7 +118,6 @@ body{font-family:'Noto Sans KR',sans-serif;background:#1A2B26;display:flex;justi
 .duty-btn.sel-duty{background:rgba(0,184,148,.25);border-color:var(--mint);color:white}
 .duty-icon{font-size:20px;display:block;margin-bottom:4px}
 .id-field{width:100%;position:relative;margin-bottom:10px}
-.id-label{font-size:11px;font-weight:900;letter-spacing:2px;color:rgba(255,255,255,.5);text-transform:uppercase;margin-bottom:8px}
 .id-input{width:100%;padding:16px 50px 16px 18px;border:2px solid rgba(255,255,255,.15);border-radius:16px;background:rgba(255,255,255,.08);color:white;font-size:18px;font-weight:900;font-family:'Noto Sans KR',sans-serif;letter-spacing:4px;outline:none;transition:border .2s}
 .id-input::placeholder{color:rgba(255,255,255,.3);letter-spacing:1px;font-size:14px;font-weight:400}
 .id-input:focus{border-color:var(--mint)}
@@ -211,6 +210,26 @@ body{font-family:'Noto Sans KR',sans-serif;background:#1A2B26;display:flex;justi
 .w-close{position:absolute;top:8px;right:8px;width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,.15);border:none;color:rgba(255,255,255,.6);font-size:12px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10}
 #toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(20px);background:#1A2B26;color:white;padding:14px 24px;border-radius:16px;font-size:14px;font-weight:900;opacity:0;transition:all .3s;white-space:nowrap;z-index:999;pointer-events:none}
 #toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.assign-banner{background:white;border-radius:16px;padding:14px 16px;box-shadow:0 2px 10px rgba(0,0,0,.08);border-left:4px solid var(--orange)}
+.assign-title{font-size:12px;font-weight:900;letter-spacing:1.5px;color:var(--gray);text-transform:uppercase;margin-bottom:10px}
+.aide-queue{display:flex;flex-direction:column;gap:8px}
+.aide-item{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:12px;background:#F7FAFC;border:2px solid transparent;transition:all .3s}
+.aide-item.active-aide{border-color:var(--orange);background:#FFFAF0}
+.aide-item.accepted-aide{border-color:var(--mint);background:#E6FAF7}
+.aide-item.skipped-aide{opacity:.45}
+.aide-num{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;flex-shrink:0;background:#E2E8F0;color:#4A5568}
+.aide-item.active-aide .aide-num{background:var(--orange);color:white}
+.aide-item.accepted-aide .aide-num{background:var(--mint);color:white}
+.aide-name-wrap{flex:1}
+.aide-n{font-size:14px;font-weight:900;color:var(--text)}
+.aide-s{font-size:11px;color:var(--gray);margin-top:2px}
+.aide-status{font-size:11px;font-weight:900;padding:3px 9px;border-radius:20px}
+.st-waiting{background:#FEF3C7;color:#92400E}
+.st-calling{background:#FEEBC8;color:var(--orange);animation:pulse 1s infinite}
+.st-accepted{background:#D1FAE5;color:#065F46}
+.st-skipped{background:#E2E8F0;color:#9CA3AF}
+.timer-countdown{font-size:28px;font-weight:900;color:var(--orange);text-align:center;margin:10px 0 2px}
+.timer-sub{font-size:11px;color:var(--gray);text-align:center;margin-bottom:8px}
 </style>
 </head>
 <body>
@@ -270,10 +289,7 @@ body{font-family:'Noto Sans KR',sans-serif;background:#1A2B26;display:flex;justi
     </div>
   </div>
   <div class="screen" id="screen-qr-gen">
-    <div class="qr-gen-hdr">
-      <button class="back-btn" onclick="goTo('screen-login','role')">←</button>
-      <div><h2>QR 코드 생성</h2><p>병실 · 침대별 QR 출력</p></div>
-    </div>
+    <div class="qr-gen-hdr"><button class="back-btn" onclick="goTo('screen-login','role')">←</button><div><h2>QR 코드 생성</h2><p>병실 · 침대별 QR 출력</p></div></div>
     <div class="qr-gen-body">
       <div class="qr-card"><h4>🏥 병실 선택</h4>
         <div class="room-sel-grid">
@@ -293,10 +309,7 @@ body{font-family:'Noto Sans KR',sans-serif;background:#1A2B26;display:flex;justi
         </div>
       </div>
       <div class="qr-card"><h4>📱 미리보기</h4>
-        <div class="qr-preview-wrap">
-          <div class="qr-inner"><div id="qr-gen-canvas"></div></div>
-          <div class="qr-room-label" id="qr-room-label">301호 · 1번 침대</div>
-        </div>
+        <div class="qr-preview-wrap"><div class="qr-inner"><div id="qr-gen-canvas"></div></div><div class="qr-room-label" id="qr-room-label">301호 · 1번 침대</div></div>
       </div>
       <button class="dl-btn" style="background:linear-gradient(135deg,var(--mint-d),var(--mint))" onclick="downloadQR()">⬇️ &nbsp;QR 이미지 저장</button>
       <button class="dl-btn" style="background:linear-gradient(135deg,var(--nurse-d),var(--nurse))" onclick="printAllQR()">🖨️ &nbsp;전체 병실 QR 인쇄</button>
@@ -304,8 +317,7 @@ body{font-family:'Noto Sans KR',sans-serif;background:#1A2B26;display:flex;justi
   </div>
   <div class="screen" id="screen-nurse">
     <div class="hdr" style="background:linear-gradient(135deg,var(--nurse-d),var(--nurse))">
-      <div class="hdr-top">
-        <div><h2 id="nurse-name">👩‍⚕️ 간호사</h2><p id="nurse-duty">3병동 · 데이 듀티</p></div>
+      <div class="hdr-top"><div><h2 id="nurse-name">👩‍⚕️ 간호사</h2><p id="nurse-duty">3병동 · 데이 듀티</p></div>
         <div style="display:flex;gap:8px;align-items:center">
           <button class="notif-btn" onclick="goTo('screen-aide-notify','aide')">🔔<div class="notif-dot"></div></button>
           <button class="logout-btn" onclick="doLogout()">로그아웃</button>
@@ -317,10 +329,7 @@ body{font-family:'Noto Sans KR',sans-serif;background:#1A2B26;display:flex;justi
         <div class="stat-card"><div class="num" style="color:#68D391" id="done-count">5</div><div class="lbl">완료</div></div>
       </div>
     </div>
-    <div class="tabs">
-      <button class="tab active" onclick="nurseTab(0,this)">빠른 요청</button>
-      <button class="tab" onclick="nurseTab(1,this)">진행 현황</button>
-    </div>
+    <div class="tabs"><button class="tab active" onclick="nurseTab(0,this)">빠른 요청</button><button class="tab" onclick="nurseTab(1,this)">진행 현황</button></div>
     <div class="scroll" id="nurse-tab0">
       <p class="sec-label">업무 요청 선택</p>
       <div class="quick-grid">
@@ -347,22 +356,19 @@ body{font-family:'Noto Sans KR',sans-serif;background:#1A2B26;display:flex;justi
       <div><h2 id="compose-title">업무 요청 작성</h2><p id="compose-sub">수술 준비 요청</p></div>
     </div>
     <div class="scroll" style="gap:18px">
-      <div>
-        <p class="f-label">🛏️ 환자 선택</p>
+      <div><p class="f-label">🛏️ 환자 선택</p>
         <div class="patient-row sel" onclick="selPat(this)"><div class="p-av">👤</div><div><div class="p-name">박○○ · 301호 2번 침대</div><div class="p-sub">복부수술 예정 · 10:30 입실</div></div></div>
         <div class="patient-row" onclick="selPat(this)"><div class="p-av">👤</div><div><div class="p-name">최○○ · 305호 1번 침대</div><div class="p-sub">정형외과 · 보행 보조 필요</div></div></div>
         <div class="patient-row" onclick="selPat(this)"><div class="p-av">👤</div><div><div class="p-name">이○○ · 302호 3번 침대</div><div class="p-sub">재활치료 예정</div></div></div>
       </div>
-      <div>
-        <p class="f-label">⚡ 긴급도</p>
+      <div><p class="f-label">⚡ 긴급도</p>
         <div class="urg-grid">
           <div class="urg-opt sh" onclick="selUrg(this,'sh')"><div class="u-icon">🔴</div><div class="u-text">긴급</div></div>
           <div class="urg-opt" onclick="selUrg(this,'sm')"><div class="u-icon">🟡</div><div class="u-text">보통</div></div>
           <div class="urg-opt" onclick="selUrg(this,'sl')"><div class="u-icon">🟢</div><div class="u-text">여유</div></div>
         </div>
       </div>
-      <div>
-        <p class="f-label">📋 업무 종류</p>
+      <div><p class="f-label">📋 업무 종류</p>
         <div class="tt-grid">
           <div class="tt-btn stt" onclick="selTT(this)"><div class="tt-icon">🔪</div><div class="tt-name">수술준비</div></div>
           <div class="tt-btn" onclick="selTT(this)"><div class="tt-icon">🛏️</div><div class="tt-name">이송</div></div>
@@ -372,10 +378,7 @@ body{font-family:'Noto Sans KR',sans-serif;background:#1A2B26;display:flex;justi
           <div class="tt-btn" onclick="selTT(this)"><div class="tt-icon">💬</div><div class="tt-name">기타</div></div>
         </div>
       </div>
-      <div>
-        <p class="f-label">📝 추가 메모</p>
-        <textarea class="memo-box" placeholder="예) 수술 동의서 확인 완료, 금식 여부 체크 요망..."></textarea>
-      </div>
+      <div><p class="f-label">📝 추가 메모</p><textarea class="memo-box" placeholder="예) 수술 동의서 확인 완료, 금식 여부 체크 요망..."></textarea></div>
       <button class="send-btn" onclick="sendRequest()">📤 &nbsp;요청 전송하기</button>
     </div>
   </div>
@@ -390,8 +393,7 @@ body{font-family:'Noto Sans KR',sans-serif;background:#1A2B26;display:flex;justi
   </div>
   <div class="screen" id="screen-aide">
     <div class="hdr" style="background:linear-gradient(135deg,var(--mint-d),var(--mint))">
-      <div class="hdr-top">
-        <div><h2 id="aide-name">🩺 간호보조</h2><p id="aide-duty">3병동 · 데이 듀티</p></div>
+      <div class="hdr-top"><div><h2 id="aide-name">🩺 간호보조</h2><p id="aide-duty">3병동 · 데이 듀티</p></div>
         <div style="display:flex;gap:8px;align-items:center">
           <button class="notif-btn">🔔<div class="notif-dot"></div></button>
           <button class="logout-btn" onclick="doLogout()">로그아웃</button>
@@ -403,23 +405,20 @@ body{font-family:'Noto Sans KR',sans-serif;background:#1A2B26;display:flex;justi
         <div class="stat-card"><div class="num" style="color:#68D391" id="aide-done">4</div><div class="lbl">오늘 완료</div></div>
       </div>
     </div>
-    <div class="tabs">
-      <button class="at tab active" onclick="aideTab(0,this)">콜벨</button>
-      <button class="at tab" onclick="aideTab(1,this)">업무 요청</button>
-    </div>
+    <div class="tabs"><button class="at tab active" onclick="aideTab(0,this)">콜벨</button><button class="at tab" onclick="aideTab(1,this)">업무 요청</button></div>
     <div class="scroll" id="aide-tab0">
       <p class="sec-label">🔴 신규 콜벨</p>
       <div class="call-card new-call" id="call-301">
         <div class="c-hdr"><div class="c-icon" style="background:#FED7D7">🚨</div><div class="c-meta"><h4>301호 · 박○○ (58세, 남)</h4><p>화장실 도움 요청</p></div><span class="c-badge bn2">신규</span></div>
         <div class="c-body"><div class="detail-box"><span class="di">🚽</span>화장실 이동 보조 필요. 낙상 위험 환자 주의.</div>
-          <div class="c-actions"><button class="c-btn cprim" onclick="acceptCall('call-301',this)">🏃 지금 이동</button><button class="c-btn csec">⏱ 잠시 후</button></div></div>
+          <div class="c-actions"><button class="c-btn cprim" onclick="acceptCallWithSeq('call-301',this)">🏃 배정 시작</button><button class="c-btn csec">⏱ 잠시 후</button></div></div>
         <div class="timer-wrap"><div class="timer-lbl">대기 시간 · 1분 경과</div><div class="timer-bar"><div class="timer-fill rf" style="width:15%"></div></div></div>
         <div class="c-footer"><span>🕐 9:46 AM</span><span>👩‍⚕️ 3병동</span></div>
       </div>
       <div class="call-card new-call" id="call-305">
         <div class="c-hdr"><div class="c-icon" style="background:#FEEBC8">😣</div><div class="c-meta"><h4>305호 · 최○○ (63세, 여)</h4><p>통증 호소</p></div><span class="c-badge bn2">신규</span></div>
         <div class="c-body"><div class="detail-box"><span class="di">💊</span>수술 부위 통증 호소. 간호사 확인 필요할 수 있음.</div>
-          <div class="c-actions"><button class="c-btn cprim" onclick="acceptCall('call-305',this)">🏃 지금 이동</button><button class="c-btn csec">👩‍⚕️ 간호사 연결</button></div></div>
+          <div class="c-actions"><button class="c-btn cprim" onclick="acceptCallWithSeq('call-305',this)">🏃 배정 시작</button><button class="c-btn csec">👩‍⚕️ 간호사 연결</button></div></div>
         <div class="timer-wrap"><div class="timer-lbl">대기 시간 · 3분 경과</div><div class="timer-bar"><div class="timer-fill" style="width:30%"></div></div></div>
         <div class="c-footer"><span>🕐 9:44 AM</span><span>👩‍⚕️ 3병동</span></div>
       </div>
@@ -449,10 +448,7 @@ body{font-family:'Noto Sans KR',sans-serif;background:#1A2B26;display:flex;justi
   </div>
   <div class="screen" id="screen-aide-notify">
     <div class="hdr" style="background:linear-gradient(135deg,var(--mint-d),var(--mint))">
-      <div class="hdr-top">
-        <div><h2>🩺 간호보조</h2><p>3병동 배정 중</p></div>
-        <button class="logout-btn" onclick="goTo('screen-nurse','nurse')">← 돌아가기</button>
-      </div>
+      <div class="hdr-top"><div><h2>🩺 간호보조</h2><p>3병동 배정 중</p></div><button class="logout-btn" onclick="goTo('screen-nurse','nurse')">← 돌아가기</button></div>
       <div class="stat-row">
         <div class="stat-card"><div class="num" style="color:#FC8181">2</div><div class="lbl">신규 요청</div></div>
         <div class="stat-card"><div class="num">1</div><div class="lbl">진행중</div></div>
@@ -460,7 +456,6 @@ body{font-family:'Noto Sans KR',sans-serif;background:#1A2B26;display:flex;justi
       </div>
     </div>
     <div class="scroll">
-      <p class="sec-label">🔴 신규 업무 요청</p>
       <div class="call-card new-call">
         <div class="c-hdr"><div class="c-icon" style="background:#FED7D7">🔪</div><div class="c-meta"><h4>수술 준비 요청 — 301호</h4><p>방금 전 발송됨</p></div><span class="c-badge bn2">신규</span></div>
         <div class="c-body"><div class="detail-box"><span class="di">📋</span>수락 대기 중...</div></div>
@@ -509,31 +504,34 @@ body{font-family:'Noto Sans KR',sans-serif;background:#1A2B26;display:flex;justi
       </div>
     </div>
     <div class="watch-screen" id="ws-alert">
-      <div class="w-alert">
-        <div class="w-ring">🔔</div>
-        <div class="w-room">301호 박○○</div>
-        <div class="w-type">🚽 화장실 도움 요청</div>
-        <div class="w-time">⏱ 2분 대기 중</div>
-      </div>
-      <div class="w-btns">
-        <button class="w-btn w-acc" onclick="wAccept()">✅ 수락</button>
-        <button class="w-btn w-rej" onclick="wGoTo('ws-home')">← 홈</button>
-      </div>
+      <div class="w-alert"><div class="w-ring">🔔</div><div class="w-room">301호 박○○</div><div class="w-type">🚽 화장실 도움 요청</div><div class="w-time">⏱ 2분 대기 중</div></div>
+      <div class="w-btns"><button class="w-btn w-acc" onclick="wAccept()">✅ 수락</button><button class="w-btn w-rej" onclick="wGoTo('ws-home')">← 홈</button></div>
     </div>
     <div class="watch-screen" id="ws-done">
-      <div class="w-done">
-        <div class="w-check">✅</div>
-        <div class="w-done-txt">수락 완료!</div>
-        <div class="w-done-sub">이동을 시작합니다<br>301호 박○○</div>
-        <button class="w-home-btn" onclick="wGoTo('ws-home')">홈으로</button>
-      </div>
+      <div class="w-done"><div class="w-check">✅</div><div class="w-done-txt">수락 완료!</div><div class="w-done-sub">이동을 시작합니다<br>301호 박○○</div><button class="w-home-btn" onclick="wGoTo('ws-home')">홈으로</button></div>
     </div>
+  </div>
+</div>
+<!-- 순차 배정 모달 -->
+<div id="seq-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:600;justify-content:center;align-items:flex-end;backdrop-filter:blur(4px)">
+  <div style="background:white;border-radius:28px 28px 0 0;padding:24px 20px 40px;width:100%;max-width:390px">
+    <div style="width:40px;height:4px;background:#E2E8F0;border-radius:99px;margin:0 auto 20px"></div>
+    <div style="font-size:16px;font-weight:900;color:var(--text);margin-bottom:4px" id="seq-patient-label">🔔 301호 박○○ 콜벨</div>
+    <div style="font-size:13px;color:var(--gray);margin-bottom:18px" id="seq-type-label">🚽 화장실 도움 요청</div>
+    <div class="assign-title">📋 순차 배정 현황</div>
+    <div class="aide-queue" id="seq-queue"></div>
+    <div class="timer-countdown" id="seq-timer">30</div>
+    <div class="timer-sub" id="seq-timer-sub">초 안에 수락하지 않으면 다음 간호보조인력에게 전달</div>
+    <button onclick="seqAccept()" style="width:100%;padding:16px;margin-top:14px;border:none;border-radius:16px;background:linear-gradient(135deg,var(--mint-d),var(--mint));color:white;font-size:16px;font-weight:900;font-family:'Noto Sans KR',sans-serif;cursor:pointer">✅ 내가 수락하기</button>
+    <button onclick="seqClose()" style="width:100%;padding:14px;margin-top:8px;border:none;border-radius:16px;background:#F0F4F8;color:var(--gray);font-size:14px;font-weight:900;font-family:'Noto Sans KR',sans-serif;cursor:pointer">닫기</button>
   </div>
 </div>
 <div id="toast">📨 요청이 전송되었어요!</div>
 <script>
 const DUTY_LABEL={DAY:'데이 듀티',EVE:'이브닝 듀티',NGT:'나이트 듀티'};
+const AIDES=[{name:'이박사',duty:'데이·3병동',id:'A1045'},{name:'최보조',duty:'데이·3병동',id:'A1033'},{name:'정도움',duty:'데이·3병동',id:'A1061'}];
 let currentRole='role',selectedDuty='DAY',selectedRoleInput='',currentUser=null,pwVisible=false,selectedRoom='301호',selectedBed='1번';
+let seqIdx=0,seqTimer=null,seqCount=30,seqActive=false,seqCardId=null;
 function updateClock(){const n=new Date(),t=n.getHours().toString().padStart(2,'0')+':'+n.getMinutes().toString().padStart(2,'0');document.getElementById('clock').textContent=t;document.getElementById('w-clock').textContent=t;}
 updateClock();setInterval(updateClock,10000);
 const SB_COLORS={role:'#1A2B26',nurse:'#2C46B8',aide:'#007A65',patient:'#007A65'};
@@ -576,10 +574,66 @@ function selPat(el){document.querySelectorAll('.patient-row').forEach(r=>r.class
 function selUrg(el,c){document.querySelectorAll('.urg-opt').forEach(o=>o.className='urg-opt');el.classList.add(c);}
 function selTT(el){document.querySelectorAll('.tt-btn').forEach(b=>b.classList.remove('stt'));el.classList.add('stt');}
 function sendRequest(){const list=document.getElementById('aide-tab1');const name=currentUser?currentUser.name:'간호사';const card=document.createElement('div');card.className='call-card new-call';card.style.animation='fu .3s ease';card.innerHTML=`<div class="c-hdr"><div class="c-icon" style="background:#FED7D7">📋</div><div class="c-meta"><h4>새 업무 요청 — 301호</h4><p>방금 전</p></div><span class="c-badge bn2">신규</span></div><div class="c-body"><div class="detail-box"><span class="di">📝</span>새 요청이 접수되었습니다.</div></div><div class="c-footer"><span>🕐 방금</span><span>👩‍⚕️ ${name}</span></div>`;list.insertBefore(card,list.children[1]);const nc=document.getElementById('aide-new');if(nc)nc.textContent=parseInt(nc.textContent)+1;const pc=document.getElementById('pending-count');if(pc)pc.textContent=parseInt(pc.textContent)+1;goTo('screen-sent','nurse');}
-function acceptCall(id,btn){const card=document.getElementById(id);if(!card)return;card.className='call-card in-prog';const b=card.querySelector('.c-badge');if(b){b.className='c-badge bpr';b.textContent='진행중';}const a=card.querySelector('.c-actions');if(a)a.innerHTML=`<button class="c-btn ccomp" onclick="completeCall('${id}',this)">✅ 완료 처리</button><button class="c-btn crep">💬 간호사 보고</button>`;const tf=card.querySelector('.timer-fill');if(tf){tf.classList.remove('rf');tf.style.width='50%';}showToast('✅ 수락 완료! 이동을 시작합니다.');const nc=document.getElementById('aide-new');if(nc)nc.textContent=Math.max(0,parseInt(nc.textContent)-1);const ap=document.getElementById('aide-prog');if(ap)ap.textContent=parseInt(ap.textContent)+1;}
+function acceptCall(cardId){const card=document.getElementById(cardId);if(!card)return;card.className='call-card in-prog';const b=card.querySelector('.c-badge');if(b){b.className='c-badge bpr';b.textContent='진행중';}const a=card.querySelector('.c-actions');if(a)a.innerHTML=`<button class="c-btn ccomp" onclick="completeCall('${cardId}',this)">✅ 완료 처리</button><button class="c-btn crep">💬 간호사 보고</button>`;const tf=card.querySelector('.timer-fill');if(tf){tf.classList.remove('rf');tf.style.width='50%';}const nc=document.getElementById('aide-new');if(nc)nc.textContent=Math.max(0,parseInt(nc.textContent)-1);const ap=document.getElementById('aide-prog');if(ap)ap.textContent=parseInt(ap.textContent)+1;}
 function completeCall(id,btn){const card=document.getElementById(id);if(!card)return;card.className='call-card c-done';card.style.opacity='.6';const b=card.querySelector('.c-badge');if(b){b.className='c-badge bdn';b.textContent='완료';}const bod=card.querySelector('.c-body');if(bod)bod.innerHTML='';showToast('🎉 완료 처리되었습니다!');const ap=document.getElementById('aide-prog');if(ap)ap.textContent=Math.max(0,parseInt(ap.textContent)-1);const ad=document.getElementById('aide-done');if(ad)ad.textContent=parseInt(ad.textContent)+1;const pc=document.getElementById('pending-count');if(pc)pc.textContent=Math.max(0,parseInt(pc.textContent)-1);const dc=document.getElementById('done-count');if(dc)dc.textContent=parseInt(dc.textContent)+1;}
 function acceptTask(id,btn){const card=document.getElementById(id);if(!card)return;card.className='call-card in-prog';const b=card.querySelector('.c-badge');if(b){b.className='c-badge bpr';b.textContent='진행중';}const a=card.querySelector('.c-actions');if(a)a.innerHTML=`<button class="c-btn ccomp" onclick="completeCall('${id}',this)">✅ 완료 처리</button><button class="c-btn crep">💬 간호사 보고</button>`;showToast('✅ 업무를 수락했습니다!');}
 function patCall(type){document.getElementById('pat-sent-title').innerHTML=type+'<br>요청이 전송됐어요!';goTo('screen-pat-sent','patient');}
+function acceptCallWithSeq(cardId,btn){
+  seqCardId=cardId;seqIdx=0;seqCount=30;seqActive=true;
+  const card=document.getElementById(cardId);
+  const h4=card?card.querySelector('h4'):null;
+  const p=card?card.querySelector('.c-meta p'):null;
+  document.getElementById('seq-patient-label').textContent='🔔 '+(h4?h4.textContent:'환자 호출');
+  document.getElementById('seq-type-label').textContent=p?p.textContent:'';
+  document.getElementById('seq-modal').style.display='flex';
+  renderSeqQueue();runSeqTimer();
+}
+function renderSeqQueue(){
+  const q=document.getElementById('seq-queue');q.innerHTML='';
+  AIDES.forEach((a,i)=>{
+    let cls='aide-item',stClass,stText;
+    if(i<seqIdx){cls+=' skipped-aide';stClass='st-skipped';stText='미수락';}
+    else if(i===seqIdx){cls+=' active-aide';stClass='st-calling';stText='호출중 🔔';}
+    else{stClass='st-waiting';stText='대기중';}
+    q.innerHTML+=`<div class="${cls}"><div class="aide-num">${i+1}</div><div class="aide-name-wrap"><div class="aide-n">${a.name}</div><div class="aide-s">${a.duty}</div></div><span class="aide-status ${stClass}">${stText}</span></div>`;
+  });
+}
+function runSeqTimer(){
+  clearInterval(seqTimer);
+  document.getElementById('seq-timer').textContent=seqCount;
+  seqTimer=setInterval(()=>{
+    seqCount--;
+    const el=document.getElementById('seq-timer');
+    if(el)el.textContent=seqCount;
+    if(seqCount<=0){clearInterval(seqTimer);seqNext();}
+  },1000);
+}
+function seqNext(){
+  seqIdx++;
+  if(seqIdx>=AIDES.length){
+    clearInterval(seqTimer);
+    const t=document.getElementById('seq-timer');
+    const s=document.getElementById('seq-timer-sub');
+    if(t)t.textContent='⚠️';
+    if(s)s.textContent='배정 가능한 간호보조인력이 없습니다. 직접 연락하세요.';
+    renderSeqQueue();return;
+  }
+  seqCount=30;renderSeqQueue();runSeqTimer();
+  showToast('⏭ '+AIDES[seqIdx].name+'에게 전달되었어요');
+}
+function seqAccept(){
+  if(!seqActive)return;
+  clearInterval(seqTimer);seqActive=false;
+  const name=AIDES[seqIdx]?AIDES[seqIdx].name:'간호보조인력';
+  const items=document.querySelectorAll('#seq-queue .aide-item');
+  if(items[seqIdx]){items[seqIdx].className='aide-item accepted-aide';const st=items[seqIdx].querySelector('.aide-status');if(st){st.className='aide-status st-accepted';st.textContent='수락 ✅';}}
+  const t=document.getElementById('seq-timer');const s=document.getElementById('seq-timer-sub');
+  if(t)t.textContent='✅';if(s)s.textContent=name+'이(가) 수락했습니다!';
+  showToast('✅ '+name+'이(가) 수락했어요!');
+  if(seqCardId)acceptCall(seqCardId);
+  setTimeout(seqClose,1800);
+}
+function seqClose(){clearInterval(seqTimer);seqActive=false;document.getElementById('seq-modal').style.display='none';}
 function checkURLParams(){const p=new URLSearchParams(window.location.search);const room=p.get('room'),bed=p.get('bed');if(room&&bed){document.getElementById('qr-room-display').textContent=room+' · '+bed+' 침대';setTimeout(()=>{const w=document.getElementById('qr-patient-preview');if(w){w.innerHTML='';try{new QRCode(w,{text:window.location.href,width:140,height:140,colorDark:'#1A2B26',colorLight:'#fff',correctLevel:QRCode.CorrectLevel.M});}catch(e){}}},200);goTo('screen-qr-land','patient');}}
 function selRoom(el,r){document.querySelectorAll('.room-sel-grid')[0].querySelectorAll('.room-opt').forEach(o=>o.classList.remove('sr'));el.classList.add('sr');selectedRoom=r;refreshQR();}
 function selBed(el,b){document.querySelectorAll('.room-sel-grid')[1].querySelectorAll('.room-opt').forEach(o=>o.classList.remove('sr'));el.classList.add('sr');selectedBed=b;refreshQR();}
@@ -589,7 +643,7 @@ function printAllQR(){showToast('🖨️ 인쇄 창을 엽니다...');setTimeout
 function openWatch(){document.getElementById('wearable-overlay').classList.add('open');wGoTo('ws-home');}
 function closeWatch(){document.getElementById('wearable-overlay').classList.remove('open');}
 function wGoTo(id){document.querySelectorAll('.watch-screen').forEach(s=>s.classList.remove('wa'));document.getElementById(id).classList.add('wa');}
-function wAccept(){wGoTo('ws-done');const c301=document.getElementById('call-301');if(c301&&c301.className.includes('new-call'))acceptCall('call-301',null);}
+function wAccept(){wGoTo('ws-done');const c301=document.getElementById('call-301');if(c301&&c301.className.includes('new-call'))acceptCall('call-301');}
 function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2500);}
 window.addEventListener('load',checkURLParams);
 </script>
